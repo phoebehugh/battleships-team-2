@@ -10,4 +10,13 @@ describe Ship do
     expect(subject.floating?).to be true
   end
 
+  it 'should not be hit when created' do
+    expect(subject.is_it_hit).to be false
+  end
+
+  it 'can be hit' do
+    subject.hit!
+    expect(subject.is_it_hit).to be true
+  end
+
 end
