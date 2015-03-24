@@ -18,14 +18,12 @@ describe Ship do
 
   it 'knows how many hits it can take' do
     ship.hit!
-    # the length is the number of hits a ship can take.
     expect(ship.hits_left).to eq 2
   end
 
   it 'knows how many hits it can take' do
     ship.hit!
     ship.hit!
-    # the length is the number of hits a ship can take.
     expect(ship.hits_left).to eq 1
   end
 
