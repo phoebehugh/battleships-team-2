@@ -1,6 +1,6 @@
 # battleships
 
-Specification provided
+# Specification provided
 
 Ship
 ----
