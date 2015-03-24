@@ -22,3 +22,18 @@ Cell
 * it shoots at its content when is shot at
 * it knows that it was shot at
 * it cannot be shot twice 
+
+Board
+-----
+* it has a 3x3 grid
+* it can place a ship at a coordinate
+* it cannot overlap ships
+* it can shoot at a coordinate
+
+Player
+------
+* he has a name
+* he can place ships on his board
+* he shoots at a board at a coordinate
+* he knows if he has floating ships
+* he knows if he has lost
