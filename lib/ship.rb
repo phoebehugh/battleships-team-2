@@ -1,10 +1,14 @@
 class Ship
-  attr_reader :floating, :number_of_hits, :ship_length
+  attr_reader :number_of_hits, :ship_length
 
   def initialize (ship_length = 2)
     @floating = true
     @number_of_hits = 0
     @ship_length = ship_length
+  end
+
+  def floating?
+    @floating
   end
 
   def hit!

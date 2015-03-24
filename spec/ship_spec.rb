@@ -1,13 +1,15 @@
 require 'ship'
 
 describe Ship do
-  ship = (Ship.new(3))
+
+  let(:ship) { Ship.new(3) }
+
   it 'should have a length when created' do
     expect(ship.ship_length).to eq(3) 
   end
 
   it 'should be floating when created' do
-    expect(ship.floating).to be true
+    expect(ship.floating?).to be true
   end
 
   it 'can be hit' do
@@ -22,7 +24,7 @@ describe Ship do
 
   it 'is not floating if it has no more hits left' do
     (ship.ship_length).times { ship.hit! }
-    expect(ship.floating).to eq false
+    expect(ship.floating?).to eq false
   end
 
 end
