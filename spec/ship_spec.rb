@@ -13,13 +13,20 @@ describe Ship do
   end
 
   it 'can be hit' do
-    ship.hit!
-    expect(ship.number_of_hits).to eq 1
+    expect(ship).to respond_to(:hit!)
   end
 
-  xit 'knows how many hits it can take' do
+  it 'knows how many hits it can take' do
+    ship.hit!
     # the length is the number of hits a ship can take.
-    expect(ship.whatever).to eq (subject.ship_length)
+    expect(ship.hits_left).to eq 2
+  end
+
+  it 'knows how many hits it can take' do
+    ship.hit!
+    ship.hit!
+    # the length is the number of hits a ship can take.
+    expect(ship.hits_left).to eq 1
   end
 
   it 'is not floating if it has no more hits left' do

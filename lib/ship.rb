@@ -1,9 +1,9 @@
 class Ship
-  attr_reader :number_of_hits, :ship_length
+  attr_reader :hits_left, :ship_length
 
-  def initialize (ship_length = 2)
+  def initialize (ship_length)
     @floating = true
-    @number_of_hits = 0
+    @hits_left = ship_length
     @ship_length = ship_length
   end
 
@@ -12,13 +12,23 @@ class Ship
   end
 
   def hit!
-    `say "ouch"`
-    @number_of_hits += 1
-    sunk?
+    # @number_of_hits += 1
+    # sunk?
+    damage_ship! 
+    sink_ship! if no_hits_left?
   end
 
-  def sunk?
-    @floating = false if (@number_of_hits >= @ship_length)
-    `say "you sunk my battle ship"` if !@floating
+  private
+
+  def sink_ship!
+    @floating = false
+  end
+
+  def damage_ship!
+    @hits_left -= 1
+  end
+
+  def no_hits_left?
+    @hits_left == 0
   end
 end
