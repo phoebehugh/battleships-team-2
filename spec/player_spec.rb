@@ -1,16 +1,17 @@
 require 'player'
 
 describe Player do
-  let(:player) { Player.new }
+  let(:board) { double :board }
+  let(:player) { Player.new "Phoebe", board }
+  let(:ship) { double :ship }
 
   it "has a name" do
-    player = Player.new("Phoebe")
     expect(player.name).to eq "Phoebe"
   end
 
-  xit "can place ships on the board at a coordinate" do
-    place_ship(ship, :a1)
-    expect(own_board[:a1].content).to eq ship   
+  it "can place ships on the board at a coordinate" do
+    expect(board).to receive(:place_ship).with(ship, :A1)
+    player.place_ship(ship, :A1) 
   end
 
   xit "can shoot at a board at a coordinate" do
