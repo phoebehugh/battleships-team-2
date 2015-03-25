@@ -24,4 +24,27 @@ describe Board do
     board.shoot_cell(:coordinate)
   end
 
+  it "knows that it has ships" do
+    board.place_ship(ship, :coordinate)
+    expect(board).to have_ships
+  end
+
+  it "knows that it does not have any ships" do
+    expect(board).not_to have_ships
+  end
+
+  it "be loser if it doesn't have floating ships" do
+    board.place_ship(ship, :coordinate)
+    expect(ship).to receive(:floating?)
+    expect(board).to be_loser
+  end
+
+  it "not be loser if it has floating ships" do
+    board.place_ship(ship, :coordinate)
+    expect(ship).to receive(:floating?) { true }
+    expect(board).not_to be_loser
+  end
+
+
+
 end
