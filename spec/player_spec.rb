@@ -4,22 +4,24 @@ describe Player do
   let(:player) { Player.new }
 
   it "has a name" do
-    expect(player).to respond_to :name
+    player = Player.new("Phoebe")
+    expect(player.name).to eq "Phoebe"
   end
 
-  it "can place ships on the board" do
+  xit "can place ships on the board at a coordinate" do
+    place_ship(ship, :a1)
+    expect(own_board[:a1].content).to eq ship   
+  end
+
+  xit "can shoot at a board at a coordinate" do
     
   end
 
-  it "can shoot at a board at a coordinate" do
+  xit "knows if he has floating ships" do
     
   end
 
-  it "knows if he has floating ships" do
-    
-  end
-
-  it "knows if he has won or lost" do
+  xit "knows if he has won or lost" do
 
   end
 
