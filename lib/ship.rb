@@ -1,3 +1,6 @@
+require_relative 'cell'
+require_relative 'water'
+
 class Ship
   attr_reader :hits_left, :ship_length
 
