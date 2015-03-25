@@ -1,9 +1,12 @@
+require_relative 'water'
+
 class Cell
 
   attr_accessor :content
 
   def initialize
     @shot = false
+    @content = Water.new
   end
 
   def shot?

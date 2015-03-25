@@ -20,8 +20,8 @@ describe Board do
 
   it "can shoot at a ship on the board" do
     board.place_ship(ship, :coordinate)
-    expect(ship).to receive :hit!
-    board.shoot_cell(:coordinate)
+    expect(ship).to receive :receive_shot
+    board.receive_shot(:coordinate)
   end
 
   it "knows that it has ships" do

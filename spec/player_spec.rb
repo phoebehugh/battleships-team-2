@@ -14,9 +14,9 @@ describe Player do
     player.place_ship(ship, :coordinate)
   end
 
-  it "can recieve a shoot a coordinate" do
-    expect(own_board).to receive(:receive_shoot).with(:coordinate)
-    player.receive_shoot(:coordinate)
+  it "can recieve a shot a coordinate" do
+    expect(own_board).to receive(:receive_shot).with(:coordinate)
+    player.receive_shot(:coordinate)
   end
 
   it "knows if he has floating ships" do

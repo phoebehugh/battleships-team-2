@@ -14,10 +14,10 @@ class Ship
     @floating
   end
 
-  def hit!
+  def receive_shot
     # @number_of_hits += 1
     # sunk?
-    damage_ship! 
+    damage_ship!
     sink_ship! if no_hits_left?
   end
 

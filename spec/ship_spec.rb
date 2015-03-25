@@ -5,7 +5,7 @@ describe Ship do
   let(:ship) { Ship.new(3) }
 
   it 'should have a length when created' do
-    expect(ship.ship_length).to eq(3) 
+    expect(ship.ship_length).to eq(3)
   end
 
   it 'should be floating when created' do
@@ -13,22 +13,22 @@ describe Ship do
   end
 
   it 'can be hit' do
-    expect(ship).to respond_to(:hit!)
+    expect(ship).to respond_to(:receive_shot)
   end
 
   it 'knows how many hits it can take' do
-    ship.hit!
+    ship.receive_shot
     expect(ship.hits_left).to eq 2
   end
 
   it 'knows how many hits it can take' do
-    ship.hit!
-    ship.hit!
+    ship.receive_shot
+    ship.receive_shot
     expect(ship.hits_left).to eq 1
   end
 
   it 'is not floating if it has no more hits left' do
-    (ship.ship_length).times { ship.hit! }
+    (ship.ship_length).times { ship.receive_shot }
     expect(ship.floating?).to eq false
   end
 

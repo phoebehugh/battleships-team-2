@@ -1,6 +1,9 @@
 require_relative 'cell'
 
 class Board
+
+  FLOATING_SHIPS = Proc.new { |ship| ship.floating? }
+
   attr_writer :ships
   attr_reader :ships
 
@@ -22,8 +25,8 @@ class Board
     ships << ship
   end
 
-  def shoot_cell(coordinate)
-    @grid[coordinate].hit!
+  def receive_shot(coordinate)
+    @grid[coordinate].receive_shot
   end
 
   def has_ships?
@@ -31,7 +34,7 @@ class Board
   end
 
   def loser?
-    !ships.any? { |ship| ship.floating? }
+    !ships.any? &FLOATING_SHIPS
   end
 
 end
