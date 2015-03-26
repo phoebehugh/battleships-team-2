@@ -3,6 +3,7 @@ require_relative 'cell'
 class Board
 
   FLOATING_SHIPS = Proc.new { |ship| ship.floating? }
+  
 
   attr_writer :ships
   attr_reader :ships
