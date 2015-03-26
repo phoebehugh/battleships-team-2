@@ -1,14 +1,14 @@
 require 'board'
 
 describe Board do
-  let(:board) { Board.new Cell, Water}
+  let(:board) { Board.new Cell, Water, 3}
   let(:ship) { double :ship, :hit! => nil }
+  let(:cell_class) { double :cell_class, :new => true }
+  let(:content_class) { double :content_class, :new => true }
 
   it "initializes with a hash of unique cells" do
-    cell_class = double :cell_class
-    content_class = double :content_class
     expect(cell_class).to receive(:new).exactly(9).times
-    Board.new cell_class, content_class 
+    Board.new cell_class, content_class, 3 
   end
 
   it "should have a grid with 9 cells" do
@@ -50,6 +50,11 @@ describe Board do
     board.place_ship(ship, :coordinate)
     expect(ship).to receive(:floating?) { true }
     expect(board).not_to be_loser
+  end
+
+  it "can get any number of grid width" do
+    board = Board.new cell_class, content_class, 5
+    expect(board.grid.count).to eq 25
   end
 
 end

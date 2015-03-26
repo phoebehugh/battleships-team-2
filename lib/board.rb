@@ -7,13 +7,21 @@ class Board
   attr_writer :ships
   attr_reader :ships
 
-  def initialize(cell_class, content_class) 
-    @grid = Hash[
-      :A1, cell_class.new(content_class), :A2, cell_class.new(content_class), :A3, cell_class.new(content_class),
-      :B1, cell_class.new(content_class), :B2, cell_class.new(content_class), :B3, cell_class.new(content_class),
-      :C1, cell_class.new(content_class), :C2, cell_class.new(content_class), :C3, cell_class.new(content_class)]
+  # def initialize(cell_class, content_class, width) 
+  #   @grid = Hash[
+  #     :A1, cell_class.new(content_class), :A2, cell_class.new(content_class), :A3, cell_class.new(content_class),
+  #     :B1, cell_class.new(content_class), :B2, cell_class.new(content_class), :B3, cell_class.new(content_class),
+  #     :C1, cell_class.new(content_class), :C2, cell_class.new(content_class), :C3, cell_class.new(content_class)]
+  #   @ships =[]
+  # end
+
+  def initialize(cell_class, content_class, width)
     @ships =[]
-  end
+    @grid = {} 
+    ("A"..(64 + width).chr).each do |l|
+      (1..width).each { |n| grid["#{l}#{n}".to_sym] = cell_class.new(content_class) }       
+    end 
+  end  
 
   def grid
     @grid
