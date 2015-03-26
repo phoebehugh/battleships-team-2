@@ -7,11 +7,11 @@ class Board
   attr_writer :ships
   attr_reader :ships
 
-  def initialize
+  def initialize(cell_class, content_class) 
     @grid = Hash[
-      :A1, Cell.new, :A2, Cell.new, :A3, Cell.new,
-      :B1, Cell.new, :B2, Cell.new, :B3, Cell.new,
-      :C1, Cell.new, :C2, Cell.new, :C3, Cell.new]
+      :A1, cell_class.new(content_class), :A2, cell_class.new(content_class), :A3, cell_class.new(content_class),
+      :B1, cell_class.new(content_class), :B2, cell_class.new(content_class), :B3, cell_class.new(content_class),
+      :C1, cell_class.new(content_class), :C2, cell_class.new(content_class), :C3, cell_class.new(content_class)]
     @ships =[]
   end
 

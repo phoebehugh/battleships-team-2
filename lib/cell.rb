@@ -4,9 +4,9 @@ class Cell
 
   attr_accessor :content
 
-  def initialize
+  def initialize content
     @shot = false
-    @content = Water.new
+    @content = content.new
   end
 
   def shot?

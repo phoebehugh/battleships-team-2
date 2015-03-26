@@ -2,8 +2,8 @@ require 'cell'
 
 describe Cell do
 
-  let(:cell) { Cell.new }
-  let(:cell_with_content) { Cell.new }
+  let(:cell) { Cell.new Class }
+  let(:cell_with_content) { Cell.new Class }
   let(:ship) { double :ship }
 
   before do
@@ -16,7 +16,7 @@ describe Cell do
   end
 
   it "has water when created" do
-    expect(cell.content.class).to eq Water
+    expect(cell.content.class).to eq Class
   end
 
   it 'can have content' do
