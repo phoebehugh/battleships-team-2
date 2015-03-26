@@ -1,3 +1,8 @@
+require_relative 'board'
+require_relative 'cell'
+require_relative 'ship'
+require_relative 'water'
+
 class Player
 
   attr_accessor :name, :own_board
@@ -13,8 +18,8 @@ class Player
     own_board.place_ship(ship, coordinate)
   end
 
-  def receive_shot(at_coordinate)
-    own_board.hit(at_coordinate)
+  def receive_shot(coordinate)
+    own_board.receive_shot(coordinate)
   end
 
   def has_floating_ships?

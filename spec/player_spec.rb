@@ -13,52 +13,36 @@ describe Player do
     expect(player.name).to eq "Player"
   end
 
-  it "can place ships on the board at a coordinate" do
-    expect(own_board).to receive(:place_ship).with(ship, :A1)
-    player.place_ship(ship, :A1) 
-  end
-
   it "can receive a shot" do
     expect(own_board).to receive(:hit).with(:A1)
     player.receive_shot(:A1)
   end
 
+  it "can place ships on the board at a coordinate" do
+    expect(own_board).to receive(:place_ship).with(ship, :coordinate)
+    player.place_ship(ship, :coordinate)
+  end
+
+  it "can receive a shot a coordinate" do
+    expect(own_board).to receive(:receive_shot).with(:coordinate)
+    player.receive_shot(:coordinate)
+  end
+
   it "knows if he has floating ships" do
-    # we need a board with a floating ship
-    # we expect to have floating ships
-    ship = double :ship, floating?: true
-    board = double :board, ships: [ship]
-    player = Player.new "Player", board
-    expect(player).to have_floating_ships
+    expect(own_board).to receive(:place_ship).with(ship, :coordinate)
+    expect(own_board).to receive(:has_ships?) { true }
+    player.place_ship(ship, :coordinate)
+    expect(player.own_board).to have_ships
   end
 
-  it "knows if he has no more floating ships" do
-    ship = double :ship, floating?: false
-    board = double :board, ships: [ship]
-    player = Player.new "Player", board
-    expect(player).not_to have_floating_ships
+  it "knows if he has lost" do
+    expect(own_board).to receive(:loser?) { true }
+    expect(own_board).to be_loser
   end
 
-  it "knows if he is the loser" do
-    # we need a board with no floating ships
-    ship = double :ship, floating?: false
-    board = double :board, ships: [ship]
-    player = Player.new "Player", board
-    expect(player).to be_loser
+  it "knows if he has won" do 
+    expect(own_board).to receive(:loser?) { false }
+    expect(own_board).not_to be_loser
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
