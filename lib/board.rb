@@ -1,11 +1,17 @@
-require_relative 'cell'
-
 class Board
-  def initialize 
-    @grid = Hash[
-      :A1, Cell.new, :A2, Cell.new, :A3, Cell.new,
-      :B1, Cell.new, :B2, Cell.new, :B3, Cell.new,
-      :C1, Cell.new, :C2, Cell.new, :C3, Cell.new]
+
+  def initialize(dimension = 3, cell)
+    @dimension = dimension
+    create_board(dimension, cell)
+  end
+
+  def create_board(dimension, cell)
+    @grid = {}
+      ("A"..(dimension + 64).chr).each do |letter|
+      (1..dimension).each do |number|
+        grid[letter + number.to_s] = cell.new 
+      end
+    end
   end
 
   def grid
@@ -18,7 +24,7 @@ class Board
   end
 
   def shoot_cell(coordinate)
-    @grid[coordinate].hit!
+    @grid[coordinate].hit! 
   end
 
 end

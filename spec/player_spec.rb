@@ -1,10 +1,14 @@
 require 'player'
 
 describe Player do
-  let(:player) { Player.new }
+  let(:player) { Player.new "Player", :own_board }
 
   it "has a name" do
-    expect(player).to respond_to :name
+    expect(player.name).to eq "Player"
+  end
+
+  it "Has a board" do
+    
   end
 
   it "can place ships on the board" do
