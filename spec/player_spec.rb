@@ -13,11 +13,6 @@ describe Player do
     expect(player.name).to eq "Player"
   end
 
-  it "can receive a shot" do
-    expect(own_board).to receive(:hit).with(:A1)
-    player.receive_shot(:A1)
-  end
-
   it "can place ships on the board at a coordinate" do
     expect(own_board).to receive(:place_ship).with(ship, :coordinate)
     player.place_ship(ship, :coordinate)
