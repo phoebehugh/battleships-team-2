@@ -9,22 +9,39 @@ class Game
 	end
 
 	def ready?
-		true if (@player_one && @player_two) != nil
+		
 	end	
 
 	def over?
 	end	
+
+	def has_players?
+		has_player_one? and has_player_two?
+	end
 
   def add_player player
   	raise "There Are Already Two Players!" if ready?
   	@player_one == nil ? @player_one = player : @player_two = player
   end
 
-  def turn
-  	@turn  = @player_one
+  def first_turn
+  	@player_one
   end
 
-  def switch_turns
-    @turn == @player_one ? @turn = @player_two : @turn = @player_one
+  # def switch_turns
+  #   @current_player == @player_one ? @current_player= @player_two : @current_player = @player_one
+  # end
+
+  def current_player
+  	# @current_player || player_one
   end
+
+  def has_player_one?
+  	!player_one.nil?
+  end
+
+  def has_player_two?
+  	!player_two.nil?
+  end
+
 end
