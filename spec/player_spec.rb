@@ -2,14 +2,10 @@ require 'player'
 
 describe Player do
   let(:own_board) { double :own_board }
-  let(:player) { Player.new "Player", own_board}
+  let(:player) { Player.new "Player", own_board }
   let(:ship) { double :ship }
 
   it "has a name" do
-    expect(player.name).to eq "Player"
-  end
-
-  it "has a board" do
     expect(player.name).to eq "Player"
   end
 
@@ -18,7 +14,7 @@ describe Player do
     player.place_ship(ship, :coordinate)
   end
 
-  it "can receive a shot a coordinate" do
+  it "can recieve a shot a coordinate" do
     expect(own_board).to receive(:receive_shot).with(:coordinate)
     player.receive_shot(:coordinate)
   end
@@ -33,11 +29,6 @@ describe Player do
   it "knows if he has lost" do
     expect(own_board).to receive(:loser?) { true }
     expect(own_board).to be_loser
-  end
-
-  it "knows if he has won" do 
-    expect(own_board).to receive(:loser?) { false }
-    expect(own_board).not_to be_loser
   end
 
 end

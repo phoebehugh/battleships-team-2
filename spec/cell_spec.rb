@@ -2,17 +2,21 @@ require 'cell'
 
 describe Cell do
 
-  let(:cell) { Cell.new }
-  let(:cell_with_content) { Cell.new }
+  let(:cell) { Cell.new Class }
+  let(:cell_with_content) { Cell.new Class }
   let(:ship) { double :ship }
 
-  before do 
+  before do
     cell_with_content.content = ship
   end
 
   it 'is not shot when created' do
     expect(cell.shot?).to be false
     expect(cell).not_to be_shot
+  end
+
+  it "has water when created" do
+    expect(cell.content.class).to eq Class
   end
 
   it 'can have content' do
